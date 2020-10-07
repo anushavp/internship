@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>ancien</title>
+
+      <!-- stylesheet -->
+      <link rel="stylesheet" href="style.css">
+
+      <!-- google fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+      <!-- bootstrap -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+      <!-- icons -->
+      <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+      <!-- for on scroll animations -->
+      <link rel="stylesheet" href="https://cdn.rawgit.com/daneden/animate.css/v3.1.0/animate.min.css">
+      <script src="https://cdn.rawgit.com/matthieua/WOW/1.0.1/dist/wow.min.js"></script>
+    </head>
+
+<body>
+      
+      <a name="home"></a>
+      <div class="wrapper">
+
+            <!--------------- hero section starts here --------------->
+
+            <div class="video-container">
+                  <video playsinline autoplay muted loop id="bgvid">
+                        <source src="videobg.mp4" type="video/mp4">
+                  </video>
+            </div>
+
+            <div class="header">
+                  <h1>RETRO CARS</h1>
+                <h2>Accelerating the Future........</h2>
+                
+            </div>
+        
+
+            <!--------------- hero section ends here --------------->
+
+            <!--------------- navbar starts here --------------->
+
+            <nav class="nav">
+                 <span id="brand">
+                        <a href="index.html">RETRO CARS</a>
+                  </span>
+                  <ul id="menu">
+                       <li><a href="cars.html">CARS</a></li>
+                        <li><a href="pricing.html">PRICING</a></li>
+                        
+                        <li><a href="aboutus.html">ABOUT US</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                  </ul>
+
+                  <div id="toggle">
+                        <div class="span">menu</div>
+                  </div>
+
+            </nav>
+
+            <div id="resize">
+                  <div class="close-btn">close</div>
+
+                  <ul id="menu">
+                       
+                        <li><a href="#about">About us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#team">Our team</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                  </ul>
+            </div>
+    </div>
+            <!--------------- navbar ends here --------------->
+
+            
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+
+// navigation starts here
+$("#toggle").click(function() {
+            $(this).toggleClass('on');
+            $("#resize").toggleClass("active");
+      });
+      $("#resize ul li a").click(function() {
+            $(this).toggleClass('on');
+            $("#resize").toggleClass("active");
+      });
+      $(".close-btn").click(function() {
+            $(this).toggleClass('on');
+            $("#resize").toggleClass("active");
+      });
+
+$(function () {
+  $(document).scroll(function () {
+    var $nav = $(".nav");
+    $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+  });
+});
+
+new WOW().init();
+
+// Select all links with hashes
+$('a[href*="#"]')
+  // Remove links that don't actually link to anything
+  .not('[href="#"]')
+  .not('[href="#0"]')
+  .click(function(event) {
+    // On-page links
+    if (
+      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+      && 
+      location.hostname == this.hostname
+    ) {
+      // Figure out element to scroll to
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      // Does a scroll target exist?
+      if (target.length) {
+        // Only prevent default if animation is actually gonna happen
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000, function() {
+          // Callback after animation
+          // Must change focus!
+          var $target = $(target);
+          $target.focus();
+          if ($target.is(":focus")) { // Checking if the target was focused
+            return false;
+          } else {
+            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+            $target.focus(); // Set focus again
+          };
+        });
+      }
+    }
+  });
+
+
+</script>
+    
+    </body>
+    
+</html>
